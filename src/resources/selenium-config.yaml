@@ -1,0 +1,58 @@
+browser: CHROME           # CHROME, SAFARI, EDGE, FIREFOX, IE.
+url: http://demo.guru99.com/V4/   # Application URL.
+headless_mode: false      # true, for headless, else false.
+driver:                   # Driver manager specific settings.
+  force_cache: true       # true, false (default). Forces to use cached driver.
+  force_download: true    # true, false (default). Forces to download driver each time.
+  path: /drivers/         # Local path where drivers will searched for.
+  version: 2.14           # Version of driver.
+  exe_url: https://driver/download/url    # Driver download URL.
+remote:                   # Remote settings block (required when Browser is Remote).
+  user_id: ${CLOUD_USER}  # Cloud User. Not required for Grid.
+  password: ${CLOUD_KEY}  # Cloud Key. Not required for Grid.
+  protocol: HTTPS         # HTTP, HTTPS. Default HTTP.
+  url: hub-cloud.browserstack.com   # Remote hub URL
+  source: BROWSERSTACK    # BROWSERSTACK, GRID, SAUCELABS
+  capabilities:           # Remote capabilities.
+    browser: Chrome
+    browser_version: 75.0
+    os: Windows
+    os_version: 10
+    resolution: 1024x768
+    name: Any Test name
+  cloud_capabilities:     # Cloud specific capabilities.
+    seleniumVersion: 3.141.59
+    name: Sauce-[Java] Sample Test
+params:     # test specific map.
+  user: <test-specific-user>
+  password: <test-specific-password>
+playback:   # Playback settings.
+  screen_state: NORMAL  # FULL_SCREEN, MAXIMIZED, NORMAL
+  highlight: true       # true, to highlight elements, else false.
+  screen_resolution:    # Screen resolution settings.
+    width: 1280     # Screen width.
+    height: 768     # Screen height.
+  recording:
+    enable: true    # true, to enable recording, else false.
+    path: ./video   # Video recording path.
+    prefix: VID     # Video file prefix.
+  delays:       # On demand delay settings.
+    implicit: 60          # Implicit waits in seconds.
+    explicit: 60          # Explicit waits in seconds.
+    after_frame_switch: 500   # Delay after iFrame switch in milliseconds.
+    after_window_switch: 500  # Delay after Window switch in milliseconds.
+    before_key_press: 0   # delay before key press in milliseconds.
+    after_key_press: 0    # delay after key press in milliseconds.
+    before_mouse_move: 0  # delay before mouse move in milliseconds.
+    after_mouse_move: 0   # delay after mouse move in milliseconds.
+    before_click: 0       # delay before mouse click in milliseconds.
+    after_click: 0        # delay after mouse click in milliseconds.
+    page_load: 60         # page load timeout in seconds.
+    script_load: 60       # script load timeout in seconds.
+    highlight: 500        # highlight delay in milliseconds.
+  screenshot:     # Screenshot settings.
+    path: ~/screenshots     # default screenshot path.
+    prefix: SCR             # screenshot file prefix.
+    extension: jpeg         # screenshot file extension.
+    capture_on_error: false # screenshot on error.
+    capture_all: true       # always capture screenshot on each event, when true.
